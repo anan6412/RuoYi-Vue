@@ -1,0 +1,266 @@
+:root {
+  --ry-primary: #409eff;
+  --ry-primary-dark: #2b6cb0;
+  --ry-text: #1f2d3d;
+  --ry-text-sub: #6b7280;
+  --ry-border: #e5e7eb;
+  --ry-bg: #f5f7fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ry-text);
+  background: var(--ry-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============ 登录 / 注册 通用外壳 ============ */
+.auth-page {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 32px 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #eef4ff 0%, #f7f9fc 45%, #eef7f5 100%);
+}
+
+/* 背景装饰光斑 */
+.auth-page::before,
+.auth-page::after {
+  position: absolute;
+  border-radius: 50%;
+  content: '';
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.auth-page::before {
+  top: -160px;
+  left: -120px;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle at 30% 30%, rgba(64, 158, 255, 0.28), transparent 68%);
+}
+
+.auth-page::after {
+  right: -140px;
+  bottom: -180px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle at 60% 40%, rgba(16, 185, 129, 0.22), transparent 68%);
+}
+
+.auth-card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 400px 440px;
+  width: 100%;
+  max-width: 840px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(31, 45, 61, 0.14), 0 2px 8px rgba(31, 45, 61, 0.06);
+}
+
+/* ---------- 左侧品牌区 ---------- */
+.auth-card__brand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 40px;
+  color: #fff;
+  background: linear-gradient(160deg, #2f6fd0 0%, #409eff 52%, #4bb8b0 100%);
+}
+
+.auth-card__brand::after {
+  position: absolute;
+  right: -60px;
+  bottom: -80px;
+  width: 260px;
+  height: 260px;
+  content: '';
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 24px;
+  font-size: 26px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.brand-title {
+  margin: 0 0 8px;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.brand-sub {
+  margin: 0 0 32px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.brand-points {
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  list-style: none;
+}
+
+.brand-points li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.brand-points .el-icon {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* ---------- 右侧表单区 ---------- */
+.auth-card__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 44px;
+}
+
+.form-head {
+  margin-bottom: 28px;
+}
+
+.form-head h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ry-text);
+}
+
+.form-head p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ry-text-sub);
+}
+
+.auth-card__form .el-form-item {
+  margin-bottom: 20px;
+}
+
+/* 验证码行 */
+.captcha-row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.captcha-row .el-input {
+  flex: 1;
+}
+
+.captcha-img {
+  display: flex;
+  flex: 0 0 118px;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #f7f9fc;
+  border: 1px solid var(--ry-border);
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.captcha-img:hover {
+  border-color: var(--ry-primary);
+}
+
+.captcha-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.submit-btn {
+  width: 100%;
+  font-size: 15px;
+  letter-spacing: 4px;
+  border-radius: 8px;
+}
+
+.form-foot {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--ry-text-sub);
+}
+
+.form-tip {
+  margin-top: 16px;
+}
+
+.demo-tip {
+  padding: 10px 12px;
+  margin-top: 18px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #8a6d3b;
+  background: #fdf6ec;
+  border: 1px solid #f5e2c4;
+  border-radius: 8px;
+}
+
+.demo-tip b {
+  color: #b88230;
+}
+
+/* 响应式：窄屏收起品牌区 */
+@media (max-width: 800px) {
+  .auth-card {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+  }
+
+  .auth-card__brand {
+    display: none;
+  }
+
+  .auth-card__form {
+    padding: 36px 26px;
+  }
+}
